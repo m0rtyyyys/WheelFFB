@@ -95,6 +95,7 @@ namespace WheelFFB
             go.AddComponent<PedalFix>();
             go.AddComponent<ButtonMapper>();
             go.AddComponent<SetupOverlay>();
+            go.AddComponent<DevHooks>();   // только dev: горячие клавиши инструментов отладки
         }
 
         private void Mod_Update()
