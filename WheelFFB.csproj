@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net35</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <AssemblyName>WheelFFB</AssemblyName>
+    <RootNamespace>WheelFFB</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <DebugType>none</DebugType>
+    <GameManaged>C:\Program Files (x86)\Steam\steamapps\common\My Winter Car\mywintercar_Data\Managed</GameManaged>
+    <MWCModsFolder>C:\Program Files (x86)\Steam\steamapps\common\My Winter Car\Mods</MWCModsFolder>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net35" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="UnityEngine"><HintPath>$(GameManaged)\UnityEngine.dll</HintPath><Private>False</Private></Reference>
+    <Reference Include="MSCLoader"><HintPath>$(GameManaged)\MSCLoader.dll</HintPath><Private>False</Private></Reference>
+    <Reference Include="PlayMaker"><HintPath>$(GameManaged)\PlayMaker.dll</HintPath><Private>False</Private></Reference>
+    <Reference Include="Assembly-CSharp"><HintPath>$(GameManaged)\Assembly-CSharp.dll</HintPath><Private>False</Private></Reference>
+    <Reference Include="0Harmony"><HintPath>$(GameManaged)\0Harmony.dll</HintPath><Private>False</Private></Reference>
+  </ItemGroup>
+
+  <Target Name="CopyToMods" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(MWCModsFolder)" />
+  </Target>
+</Project>
